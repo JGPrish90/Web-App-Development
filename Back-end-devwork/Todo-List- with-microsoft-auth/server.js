@@ -26,7 +26,7 @@ app.use(
         secret: 'keyboard cat',
         resave: false,
         saveUninitialized: false,
-        store: new MongoStore({ mongooseConnection: mongoose.connection }),        
+        store: MongoStore.create({ mongoUrl: process.env.DB_STRING }),        
     })
 )
 
@@ -42,3 +42,4 @@ app.use('/todos', todoRoutes)
 app.listen(process.env.PORT, ()=>{
     console.log('Server is running, you better catch it!')
 })
+
